@@ -1,0 +1,21 @@
+{
+    "name": "stanislav2014/diffcalc",
+    "bin":[
+        "bin/gendiff"
+    ],
+    "description": "hexlet progect",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Stanislav Mura",
+            "email": "s_admin@mail.ru"
+        }
+    ],
+    "autoload": {
+        "files": ["src/help.php"
+        ]
+                },
+    "require": {
+        "docopt/docopt": "^1.0"
+    }
+}
