@@ -17,7 +17,8 @@ DOC;
 
 function run()
 {
-	$args = \Docopt::handle(HELP);
+  $args = \Docopt::handle(HELP);
+  
 }
 
 run();

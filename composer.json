@@ -3,6 +3,7 @@
     "bin":[
         "bin/gendiff"
     ],
+    "keywords":["gendiff", "hexlet"],
     "description": "hexlet progect",
     "type": "project",
     "authors": [
