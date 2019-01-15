@@ -17,9 +17,9 @@ class Differ
     --format <fmt>                Report format [default: pretty]
 DOC;
 
-  static function run()
+  public static function run()
   {
-    $args = \Docopt::handle(HELP);
+    $args = \Docopt::handle(self::HELP);
   
   }
 }
