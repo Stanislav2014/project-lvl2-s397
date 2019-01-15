@@ -5,4 +5,5 @@ php:
 install:
   - composer self-update
   - make install
-  
+
+script: make test
