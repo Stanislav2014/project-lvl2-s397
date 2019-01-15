@@ -1,6 +1,6 @@
 <?php
 
-namespace Generate_gendiff;
+namespace GenDiff;
 
 //use function Docopt\Handler;
 const HELP = <<<DOC

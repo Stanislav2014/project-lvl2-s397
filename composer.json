@@ -12,11 +12,20 @@
             "email": "s_admin@mail.ru"
         }
     ],
+    "scripts": {
+        "phpunit": "phpunit",
+        "test": "phpunit tests"
+          },  
     "autoload": {
-        "files": ["src/help.php"
-        ]
-                },
+        "psr-4": {
+            "GenDiff\\": "src",
+            "GenDiff\\Tests\\": "tests"
+          }
+        },          
     "require": {
         "docopt/docopt": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
     }
 }
