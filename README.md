@@ -1,3 +1,7 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/136a02106f6c55f29cfd/maintainability)](https://codeclimate.com/github/Stanislav2014/project-lvl2-s397/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/136a02106f6c55f29cfd/test_coverage)](https://codeclimate.com/github/Stanislav2014/project-lvl2-s397/test_coverage)
+
 ### Installation
 
 * Open terminal
