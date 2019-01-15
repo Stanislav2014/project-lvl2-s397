@@ -2,6 +2,8 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/136a02106f6c55f29cfd/test_coverage)](https://codeclimate.com/github/Stanislav2014/project-lvl2-s397/test_coverage)
 
+[![Build Status](https://travis-ci.org/Stanislav2014/project-lvl2-s397.svg?branch=master)](https://travis-ci.org/Stanislav2014/project-lvl2-s397)
+
 ### Watch how work games 
 
 Watch video on asciinema.org
