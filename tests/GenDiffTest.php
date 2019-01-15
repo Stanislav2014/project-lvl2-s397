@@ -2,13 +2,13 @@
 namespace GenDiff\Tests;
 
 use \PHPUnit\Framework\TestCase;
-use \GenDiff\HELP as h;
+use \GenDiff\Differ;
 
 class GenDiffTest extends TestCase
 {
     public function testGetDiff()
     {
-        $differ = \Docopt::handle(h);
+        $differ = \Docopt::handle(Differ::HELP);
         $jsonExpected = '{
           "  host": hexlet.io,
           "+ timeout": 20,
