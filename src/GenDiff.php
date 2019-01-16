@@ -1,6 +1,6 @@
 <?php
 
-namespace GenDiff;
+namespace App\GenDiff;
 
 //use function Docopt\Handler;
 class Differ

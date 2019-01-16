@@ -18,8 +18,8 @@
           },  
     "autoload": {
         "psr-4": {
-            "GenDiff\\": "src",
-            "GenDiff\\Tests\\": "tests"
+            "App\\GenDiff\\": "src",
+            "App\\GenDiff\\Tests\\": "tests"
           }
         },          
     "require": {

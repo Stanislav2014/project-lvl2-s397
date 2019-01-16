@@ -1,8 +1,9 @@
 <?php
-namespace GenDiff\Tests;
+
+namespace App\GenDiff\Tests;
 
 use \PHPUnit\Framework\TestCase;
-use \GenDiff\Differ;
+use App\GenDiff\Differ;
 
 class GenDiffTest extends TestCase
 {
