@@ -17,6 +17,8 @@
         "test": "phpunit tests"
           },  
     "autoload": {
+        "files": ["src/GenDiff.php"
+        ],
         "psr-4": {
             "App\\GenDiff\\": "src",
             "App\\GenDiff\\Tests\\": "tests"
