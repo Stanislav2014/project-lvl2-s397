@@ -8,8 +8,8 @@ class Parse
     {
         
     }
-    function boolToStr($boll)
+    function boolToStr($bool)
     {
-        return $boll? 'true' : 'false';
+        return $bool? 'true' : 'false';
     }
 }

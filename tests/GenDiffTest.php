@@ -9,20 +9,13 @@ class GenDiffTest extends TestCase
 {
     public function testGetDiff()
     {
-        //$differ = \Docopt::handle(Differ::HELP);
+        $expected = file_get_contents("./tests/fixtures/expected");
 
-        $jsonExpected = "{  host: hexlet.io". "\n" . 
-                         "+ timeout: 20" . "\n" .
-                         "- timeout: 50" . "\n" .
-                         "- proxy: 123.234.53.22" . "\n" .
-                         "+ verbose: true}";
-
-        $pathToFile1 = "./jsonfiles/before.json";
-        $pathToFile2 = "./jsonfiles/after.json"; 
+        $pathToFile1 = "./tests/fixtures/before.json";
+        $pathToFile2 = "./tests/fixtures/after.json"; 
 
         $actual = Differ::genDiff($pathToFile1, $pathToFile2);
-        //var_dump(json_decode($jsonExpected, true));
-
-        $this->assertEquals($actual, $jsonExpected);
+    
+        $this->assertEquals($expected, $actual);
     }
 }

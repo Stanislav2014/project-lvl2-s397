@@ -24,20 +24,20 @@ class Differ
             if (array_key_exists($key, $content1) && array_key_exists($key, $content2)) {
                 if ($value !== $content1[$key]) {
                     return [
-                    ADD . " {$key}: {$value}",
-                    DELETE . " {$key}: {$content1[$key]}"
+                    "  " . ADD . " {$key}: {$value}",
+                    "  " . DELETE . " {$key}: {$content1[$key]}"
                     ];
                 } else {
-                    return EQUAL . " {$key}: {$value}";
+                    return "  " . EQUAL . " {$key}: {$value}";
                 }
 
             } elseif (array_key_exists($key, $content1)) {
 
-                return DELETE . " {$key}: {$value}";
+                return "  " . DELETE . " {$key}: {$value}";
 
             } elseif (array_key_exists($key, $content2)) {
 
-                return ADD . " {$key}: {$value}";
+                return "  " . ADD . " {$key}: {$value}";
             }
 
         }, array_keys($union), $union);
@@ -45,8 +45,8 @@ class Differ
         //var_dump($union);
         //var_dump(flattenAll($diff));
 
-        $result = "{" . implode("\n", flattenAll($diff)) . "}";
-        print_r($result);
+        $result = "{" . "\n". implode("\n", flattenAll($diff)) ."\n". "}";
+        //print_r($result);
         return $result;
     }
 
