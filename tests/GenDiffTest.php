@@ -9,7 +9,8 @@ class GenDiffTest extends TestCase
 {
     public function testGetDiff()
     {
-        $differ = \Docopt::handle(Differ::HELP);
+        //$differ = \Docopt::handle(Differ::HELP);
+
         $jsonExpected = '{
           "  host": hexlet.io,
           "+ timeout": 20,
@@ -17,6 +18,7 @@ class GenDiffTest extends TestCase
           "- proxy": 123.234.53.22,
           "+ verbose": true
         }';
+
         $arr = [];
 
         $this->assertEquals($arr, json_decode($jsonExpected, true));

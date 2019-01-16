@@ -22,6 +22,11 @@ DOC;
     $args = \Docopt::handle(self::HELP);
   
   }
+  public function __construct()
+  {
+    
+  }
+
 }
 
 //self::run();

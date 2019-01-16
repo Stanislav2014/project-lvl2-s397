@@ -14,7 +14,8 @@
     ],
     "scripts": {
         "phpunit": "phpunit",
-        "test": "phpunit tests"
+        "test": "phpunit tests",
+        "phpcs": "phpcs"
           },  
     "autoload": {
         "files": ["src/GenDiff.php"
@@ -25,9 +26,11 @@
           }
         },          
     "require": {
-        "docopt/docopt": "^1.0"
+        "docopt/docopt": "^1.0",
+        "funct/funct": "^1.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "squizlabs/php_codesniffer":"*"
     }
 }
