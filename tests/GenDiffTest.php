@@ -11,16 +11,18 @@ class GenDiffTest extends TestCase
     {
         //$differ = \Docopt::handle(Differ::HELP);
 
-        $jsonExpected = '{
-          "  host": hexlet.io,
-          "+ timeout": 20,
-          "- timeout": 50,
-          "- proxy": 123.234.53.22,
-          "+ verbose": true
-        }';
+        $jsonExpected = "{  host: hexlet.io". "\n" . 
+                         "+ timeout: 20" . "\n" .
+                         "- timeout: 50" . "\n" .
+                         "- proxy: 123.234.53.22" . "\n" .
+                         "+ verbose: true}";
 
-        $arr = [];
+        $pathToFile1 = "./jsonfiles/before.json";
+        $pathToFile2 = "./jsonfiles/after.json"; 
 
-        $this->assertEquals($arr, json_decode($jsonExpected, true));
+        $actual = Differ::genDiff($pathToFile1, $pathToFile2);
+        //var_dump(json_decode($jsonExpected, true));
+
+        $this->assertEquals($actual, $jsonExpected);
     }
 }

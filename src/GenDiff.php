@@ -2,31 +2,52 @@
 
 namespace App\GenDiff;
 
-//use function Docopt\Handler;
+use function Funct\Collection\union;
+use function Funct\Collection\flattenAll;
+use App\GenDiff\Parse;
+
+const ADD = "+";
+const DELETE = "-";
+const EQUAL = " ";
+
 class Differ
 {
-  const HELP = <<<DOC
-  Generate diff.
+    public function genDiff($pathFile1, $pathFile2):string
+    {
+        $content1 = json_decode(file_get_contents($pathFile1), true);
+        $content2 = json_decode(file_get_contents($pathFile2), true);
 
-  Usage:
-    gendiff (-h|--help)
-    gendiff [--format <fmt>] <firstFile> <secondFile>
+        $union = union($content1, $content2);
 
-  Options:
-    -h --help                     Show this screen
-    --format <fmt>                Report format [default: pretty]
-DOC;
+        $diff = array_map(function ($key, $value) use ($content1, $content2) {
+            $value = is_bool($value) ? Parse::boolToStr($value) : $value;
+            if (array_key_exists($key, $content1) && array_key_exists($key, $content2)) {
+                if ($value !== $content1[$key]) {
+                    return [
+                    ADD . " {$key}: {$value}",
+                    DELETE . " {$key}: {$content1[$key]}"
+                    ];
+                } else {
+                    return EQUAL . " {$key}: {$value}";
+                }
 
-  public static function run()
-  {
-    $args = \Docopt::handle(self::HELP);
-  
-  }
-  public function __construct()
-  {
-    
-  }
+            } elseif (array_key_exists($key, $content1)) {
+
+                return DELETE . " {$key}: {$value}";
+
+            } elseif (array_key_exists($key, $content2)) {
+
+                return ADD . " {$key}: {$value}";
+            }
+
+        }, array_keys($union), $union);
+
+        var_dump($union);
+        var_dump(flattenAll($diff));
+
+        $result = "{" . implode("\n", flattenAll($diff)) . "}";
+        var_dump($result);
+        return $result;
+    }
 
 }
-
-//self::run();
