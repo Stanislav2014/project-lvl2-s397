@@ -42,11 +42,11 @@ class Differ
 
         }, array_keys($union), $union);
 
-        var_dump($union);
-        var_dump(flattenAll($diff));
+        //var_dump($union);
+        //var_dump(flattenAll($diff));
 
         $result = "{" . implode("\n", flattenAll($diff)) . "}";
-        var_dump($result);
+        print_r($result);
         return $result;
     }
 

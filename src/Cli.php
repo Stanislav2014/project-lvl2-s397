@@ -18,7 +18,7 @@ DOC;
 
     public function run()
     {
-        $args = \Docopt::handle(self::HELP, $params);
+        $args = \Docopt::handle(self::DOC);
 
         if (isset($args['<firstFile>'])) {
             $filepath1 = $args['<firstFile>'];
