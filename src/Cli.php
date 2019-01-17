@@ -36,7 +36,8 @@ DOC;
         if (isset($args['<fmt>'])) {
             $fmt = $args['<fmt>'];
         }
-        return Differ::genDiff($filepath1, $filepath2);
+        print_r(Differ::genDiff($filepath1, $filepath2));
+        //return Differ::genDiff($filepath1, $filepath2);
 
     }
 
