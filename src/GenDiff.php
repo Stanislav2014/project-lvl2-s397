@@ -12,7 +12,7 @@ const EQUAL = " ";
 
 class Differ
 {
-    public function genDiff($pathFile1, $pathFile2, $format = ""):string
+    public static function genDiff($pathFile1, $pathFile2, $format = ""):string
     {
         $content1 = Parse::parse($pathFile1, Parse::getData($pathFile1));
         $content2 = Parse::parse($pathFile2, Parse::getData($pathFile2));

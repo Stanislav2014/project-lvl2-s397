@@ -5,7 +5,7 @@ use function Funct\Collection\union;
 
 class Ast
 {
-    public function dataToAst($before, $after)
+    public static function dataToAst($before, $after)
     {
         $keys = array_keys(array_merge($before, $after));
         var_dump($keys);
@@ -36,7 +36,7 @@ class Ast
         //var_dump($diff);
     }
 
-    public function createNode($type, $key, $beforeValue, $afterValue, $children)
+    public static function createNode($type, $key, $beforeValue, $afterValue, $children)
     {
         return [
             'type' => $type,
@@ -48,7 +48,7 @@ class Ast
 
     }
 
-    public function astToStr()
+    public static function astToStr()
     {
 
     }

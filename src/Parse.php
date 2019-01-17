@@ -6,7 +6,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class Parse
 {
-    public function parse($path, $data)
+    public static function parse($path, $data)
     {
         switch (self::getFormat($path)) {
         case 'yml':
@@ -29,13 +29,13 @@ class Parse
         
     }
 
-    public function getFormat($path) 
+    public static function getFormat($path) 
     {
         $extension = pathinfo($path, PATHINFO_EXTENSION);
         return $extension;
     }
 
-    public function getData($path)
+    public static function getData($path)
     {
         if (file_exists($path) && is_readable($path)) {
             return file_get_contents($path);
@@ -43,7 +43,7 @@ class Parse
     
     }
 
-    function boolToStr($bool)
+    public static function boolToStr($bool)
     {
         return $bool? 'true' : 'false';
     }
