@@ -23,6 +23,7 @@ class Parse
 
         default:
             return "unknown format";
+
             break;
         }
         
@@ -39,8 +40,7 @@ class Parse
         if (file_exists($path) && is_readable($path)) {
             return file_get_contents($path);
         }
-        
-
+    
     }
 
     function boolToStr($bool)

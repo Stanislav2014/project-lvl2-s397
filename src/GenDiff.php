@@ -4,7 +4,7 @@ namespace App\GenDiff;
 
 use function Funct\Collection\union;
 use function Funct\Collection\flattenAll;
-use function App\GenDiff\Parse;
+use App\GenDiff\Parse;
 
 const ADD = "+";
 const DELETE = "-";
