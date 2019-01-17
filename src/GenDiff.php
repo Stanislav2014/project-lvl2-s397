@@ -4,7 +4,7 @@ namespace App\GenDiff;
 
 use function Funct\Collection\union;
 use function Funct\Collection\flattenAll;
-use App\GenDiff\Parse;
+use function App\GenDiff\Parse;
 
 const ADD = "+";
 const DELETE = "-";
@@ -12,10 +12,10 @@ const EQUAL = " ";
 
 class Differ
 {
-    public function genDiff($pathFile1, $pathFile2):string
+    public function genDiff($pathFile1, $pathFile2, $format = ""):string
     {
-        $content1 = json_decode(file_get_contents($pathFile1), true);
-        $content2 = json_decode(file_get_contents($pathFile2), true);
+        $content1 = Parse::parse($pathFile1, Parse::getData($pathFile1));
+        $content2 = Parse::parse($pathFile2, Parse::getData($pathFile2));
 
         $union = union($content1, $content2);
 

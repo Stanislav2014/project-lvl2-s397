@@ -33,6 +33,9 @@ DOC;
                 die("File {$filepath2} does not exist\n");
             }
         }
+        if (isset($args['<fmt>'])) {
+            $fmt = $args['<fmt>'];
+        }
         return Differ::genDiff($filepath1, $filepath2);
 
     }
