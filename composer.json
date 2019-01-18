@@ -22,7 +22,10 @@
             "src/GenDiff.php",
             "src/Parser.php",
             "src/Cli.php",
-            "src/Ast.php"
+            "src/Ast.php",
+            "src/renders/Plain.php",
+            "src/renders/Pretty.php",
+            "src/renders/Render.php"
         ],
         "psr-4": {
             "GenDiff\\": "src",

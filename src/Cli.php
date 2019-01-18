@@ -34,10 +34,10 @@ DOC;
                 die("File {$filepath2} does not exist\n");
             }
         }
-        if (isset($args['<fmt>'])) {
-            $fmt = $args['<fmt>'];
+        if (isset($args['--format'])) {
+            $fmt = $args['--format'];
         } else {
-            $fmt = 'json';
+            $fmt = 'pretty';
         }
         
         try {
