@@ -1,6 +1,7 @@
 <?php
 
-namespace App\GenDiff;
+namespace GenDiff;
+use function GenDiff\Differ\genDiff;
 
 class Cli
 {
@@ -36,9 +37,14 @@ DOC;
         if (isset($args['<fmt>'])) {
             $fmt = $args['<fmt>'];
         }
-        print_r(Differ::genDiff($filepath1, $filepath2));
+        
         //return Differ::genDiff($filepath1, $filepath2);
-
+        try {
+            print_r(genDiff($filepath1, $filepath2));
+        } catch (\Exception $exception) {
+            echo $exception->getMessage() . PHP_EOL;
+        }
+    
     }
 
 }

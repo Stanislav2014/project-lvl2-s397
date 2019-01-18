@@ -1,50 +1,48 @@
 <?php
 
-namespace App\GenDiff;
+namespace GenDiff\Parse;
 
 use Symfony\Component\Yaml\Yaml;
 
-class Parse
+function parse($type, $data)
 {
-    public static function parse($path, $data)
-    {
-        switch (self::getFormat($path)) {
-        case 'yml':
+    switch ($type) {
+    case 'yml':
 
-            return Yaml::parse($data);
+        return Yaml::parse($data);
 
-            break;
+        break;
             
-        case 'json':
-
-            return json_decode($data, true);
-
-            break;
-
-        default:
-            return "unknown format";
-
-            break;
-        }
-        
-    }
-
-    public static function getFormat($path) 
-    {
-        $extension = pathinfo($path, PATHINFO_EXTENSION);
-        return $extension;
-    }
-
-    public static function getData($path)
-    {
-        if (file_exists($path) && is_readable($path)) {
-            return file_get_contents($path);
-        }
+    case 'json':
     
-    }
+        return json_decode($data, true);
 
-    public static function boolToStr($bool)
-    {
-        return $bool? 'true' : 'false';
+        break;
+
+    default:
+
+        throw new \Exception("This is '{$format}' unknowm format");
+        
+        break;
     }
+       
+}
+
+function getType($path) 
+{
+    $extension = pathinfo($path, PATHINFO_EXTENSION);
+    return $extension;
+}
+
+function getData($path)
+{
+    if (file_exists($path) && is_readable($path)) {
+        return file_get_contents($path);
+    }
+    
+}
+
+function boolToStr($bool)
+{
+    return $bool? 'true' : 'false';
 }

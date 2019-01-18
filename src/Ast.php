@@ -1,14 +1,15 @@
 <?php
 
-namespace App\GenDiff;
-use function Funct\Collection\union;
+namespace GenDiff\Ast;
 
-class Ast
+use function GenDiff\Parse\boolToStr;
+use function Funct\Collection\flattenAll;
+
+
+function dataToAst($before, $after)
 {
-    public static function dataToAst($before, $after)
-    {
         $keys = array_keys(array_merge($before, $after));
-        var_dump($keys);
+        //var_dump($keys);
 
         $diff = array_map(function ($key) use ($before, $after) {
             $beforeValue = $before[$key] ?? "" ;
@@ -16,40 +17,106 @@ class Ast
 
             if (array_key_exists($key, $before) && array_key_exists($key, $after)) {
                 if (is_array($before[$key]) && is_array($after[$key])) {
-                    $ast = self::createNode('nested', $key, null, null, self::dataToAst($before, $after));
+                    $ast = createNode('nested', $key, null, null, dataToAst($beforeValue, $afterValue));
                 } elseif ($before[$key] === $after[$key]) {
-                    $ast = self::createNode('unchanged', $key, $beforeValue, $afterValue, null);
+                    $ast = createNode('unchanged', $key, $beforeValue, $afterValue, null);
                 } else {
-                    $ast = self::createNode('changed', $key, $beforeValue, $afterValue, null);
+                    $ast = createNode('changed', $key, $beforeValue, $afterValue, null);
                 }
 
             } elseif (array_key_exists($key, $before) && !array_key_exists($key, $after)) {
-                $ast = self::createNode('deleted', $key, $beforeValue, null, null);
+                $ast = createNode('deleted', $key, $beforeValue, null, null);
 
             } elseif (!array_key_exists($key, $before) && array_key_exists($key, $after)) {
 
-                $ast = self::createNode('added', $key, null, $afterValue, null);
+                $ast = createNode('added', $key, null, $afterValue, null);
             }
             return $ast; 
         }, $keys);
 
         //var_dump($diff);
+
+        return $diff;
     }
 
-    public static function createNode($type, $key, $beforeValue, $afterValue, $children)
+function createNode($type, $key, $beforeValue, $afterValue, $children)
     {
         return [
             'type' => $type,
             'key' => $key,
-            'beforeValue' => is_bool($beforeValue)? Parse::boolToStr($beforeValue) : $beforeValue ,
-            'afterValue' => is_bool($afterValue)? Parse::boolToStr($afterValue) : $afterValue,
+            'beforeValue' => is_bool($beforeValue)? boolToStr($beforeValue) : $beforeValue ,
+            'afterValue' => is_bool($afterValue)? boolToStr($afterValue) : $afterValue,
             'children' => $children
         ];
 
     }
 
-    public static function astToStr()
+function astToStr($ast)
     {
-
+        $result = array_map(function ($item) {
+            return render($item, 0);
+        }, $ast);
+        print_r($result);
+        return '{' . PHP_EOL . implode("\n", array_filter(flattenAll($result))) . PHP_EOL . '}';
     }
+
+function render($item, $depth)
+    {
+        [
+            'type' => $type,
+            'key' => $key,
+            'beforeValue' => $before,
+            'afterValue' => $after,
+            'children' => $children
+        ] = $item;
+
+        $before = arrToStr($before, $depth);
+        $after = arrToStr($after, $depth);
+
+        //var_dump($item);
+        switch ($type) {
+        case 'nested':
+        return [
+            getSpace($depth) . "  $key: {",
+            array_map(function ($item) use ($depth) {
+                return render($item, $depth + 1);
+            }, $children),
+            getSpace($depth) . "  }"
+        ];
+
+            break;
+
+        case 'unchanged':
+            return getSpace($depth) . "  $key: $before";
+            break;
+
+        case 'changed':
+            return [getSpace($depth) . "+ $key: $after", getSpace($depth) . "- $key: $before"];
+            break;
+
+        case 'deleted':
+            return getSpace($depth) . "- $key: $before";
+            break;
+
+        case 'added':
+            return getSpace($depth) . "+ $key: $after";
+            break;
+        }
+    }
+
+function arrToStr($value, $depth)
+    {
+        if (!is_array($value)) {
+            return $value;
+        }
+        $keys = array_keys($value);
+        $result = array_map(function ($item) use ($value, $depth) {
+            return [PHP_EOL . getSpace($depth + 1) . "$item: $value[$item]"];
+        }, $keys);
+        return implode("", flattenAll(array_merge(["{"], $result, [PHP_EOL . getSpace($depth) . "  }"])));
+    }
+
+function getSpace($depth)
+{
+    return str_repeat(' ', $depth * 4);
 }
