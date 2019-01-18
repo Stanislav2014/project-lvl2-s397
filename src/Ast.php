@@ -2,7 +2,7 @@
 
 namespace GenDiff\Ast;
 
-use function GenDiff\Parse\boolToStr;
+use function GenDiff\Parser\boolToStr;
 use function Funct\Collection\flattenAll;
 
 
@@ -51,7 +51,7 @@ function createNode($type, $key, $beforeValue, $afterValue, $children)
 
     }
 
-function astToStr($ast)
+function astToString($ast)
     {
         $result = array_map(function ($item) {
             return render($item, 0);
@@ -70,8 +70,8 @@ function render($item, $depth)
             'children' => $children
         ] = $item;
 
-        $before = arrToStr($before, $depth);
-        $after = arrToStr($after, $depth);
+        $before = arrToString($before, $depth);
+        $after = arrToString($after, $depth);
 
         //var_dump($item);
         switch ($type) {
@@ -104,7 +104,7 @@ function render($item, $depth)
         }
     }
 
-function arrToStr($value, $depth)
+function arrToString($value, $depth)
     {
         if (!is_array($value)) {
             return $value;

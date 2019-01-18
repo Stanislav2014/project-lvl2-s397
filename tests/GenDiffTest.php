@@ -3,9 +3,7 @@
 namespace GenDiff\Tests;
 
 use \PHPUnit\Framework\TestCase;
-use function GenDiff\Differ\genDiff;
-//use function GenDiff\Ast;
-//use function GenDiff\Parse\parse;
+use function GenDiff\genDiff;
 
 class GenDiffTest extends TestCase
 {
@@ -13,12 +11,11 @@ class GenDiffTest extends TestCase
     public function testGenDiff_Json()
     {
         $expected = file_get_contents("./tests/fixtures/expected");
-        $pathFile1 = "./tests/fixtures/beforerecursive.yml";
 
-        $pathToFile1 = "./tests/fixtures/before.json";
-        $pathToFile2 = "./tests/fixtures/after.json"; 
+        $filepath1 = "./tests/fixtures/before.json";
+        $filepath2 = "./tests/fixtures/after.json"; 
 
-        $actual = genDiff($pathToFile1, $pathToFile2);
+        $actual = genDiff($filepath1, $filepath2);
     
         $this->assertEquals($expected, $actual);
     }
@@ -27,10 +24,10 @@ class GenDiffTest extends TestCase
     {
         $expected = file_get_contents("./tests/fixtures/expected");
 
-        $pathToFile1 = "./tests/fixtures/before.yml";
-        $pathToFile2 = "./tests/fixtures/after.yml"; 
+        $filepath1 = "./tests/fixtures/before.yml";
+        $filepath2 = "./tests/fixtures/after.yml"; 
 
-        $actual = genDiff($pathToFile1, $pathToFile2);
+        $actual = genDiff($filepath1, $filepath2);
     
         $this->assertEquals($expected, $actual);
     }
@@ -39,10 +36,10 @@ class GenDiffTest extends TestCase
     {
         $expected = file_get_contents("./tests/fixtures/expected_recursive");
 
-        $pathToFile1 = "./tests/fixtures/before_recursive.json";
-        $pathToFile2 = "./tests/fixtures/after_recursive.json"; 
+        $filepath1 = "./tests/fixtures/before_recursive.json";
+        $filepath2 = "./tests/fixtures/after_recursive.json"; 
 
-        $actual = genDiff($pathToFile1, $pathToFile2);
+        $actual = genDiff($filepath1, $filepath2);
     
         $this->assertEquals($expected, $actual);
     }

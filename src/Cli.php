@@ -1,7 +1,7 @@
 <?php
 
-namespace GenDiff;
-use function GenDiff\Differ\genDiff;
+namespace GenDiff\Cli;
+use function GenDiff\genDiff;
 
 class Cli
 {
@@ -36,11 +36,12 @@ DOC;
         }
         if (isset($args['<fmt>'])) {
             $fmt = $args['<fmt>'];
+        } else {
+            $fmt = 'json';
         }
         
-        //return Differ::genDiff($filepath1, $filepath2);
         try {
-            print_r(genDiff($filepath1, $filepath2));
+            echo genDiff($filepath1, $filepath2, $fmt);
         } catch (\Exception $exception) {
             echo $exception->getMessage() . PHP_EOL;
         }

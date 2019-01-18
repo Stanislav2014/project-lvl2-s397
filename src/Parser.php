@@ -1,6 +1,6 @@
 <?php
 
-namespace GenDiff\Parse;
+namespace GenDiff\Parser;
 
 use Symfony\Component\Yaml\Yaml;
 
@@ -26,20 +26,6 @@ function parse($type, $data)
         break;
     }
        
-}
-
-function getType($path) 
-{
-    $extension = pathinfo($path, PATHINFO_EXTENSION);
-    return $extension;
-}
-
-function getData($path)
-{
-    if (file_exists($path) && is_readable($path)) {
-        return file_get_contents($path);
-    }
-    
 }
 
 function boolToStr($bool)
