@@ -16,7 +16,7 @@ Watch video on asciinema.org
 
 [gendiff recursive plain](https://asciinema.org/a/oskpOCtzzANxuebDuEjqnu1Mu)
 
-
+[gendiff recursive json](https://asciinema.org/a/gKpmIafcAxzZVSLBFFIH9o647)
 
 ### Installation
 
