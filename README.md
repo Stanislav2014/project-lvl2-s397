@@ -12,9 +12,9 @@ Watch video on asciinema.org
 
 [gendiff json and yml](https://asciinema.org/a/TAPZ5J4ChPxoEXnIQIjGyfkFE)
 
-[gendiff recursive pretty]https://asciinema.org/a/S2bn55P3ttItaslzURg93OdgO
+[gendiff recursive pretty](https://asciinema.org/a/S2bn55P3ttItaslzURg93OdgO)
 
-[gendiff recursive plain]https://asciinema.org/a/S2bn55P3ttItaslzURg93OdgO
+[gendiff recursive plain](https://asciinema.org/a/S2bn55P3ttItaslzURg93OdgO)
 
 
 
