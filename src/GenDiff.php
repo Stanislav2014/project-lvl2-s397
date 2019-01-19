@@ -16,7 +16,7 @@ function genDiff($filepath1, $filepath2, $format = 'pretty'):string
     //var_dump($ast);
     $string = render($ast, $format);
 
-    print_r($string);
+    //print_r($string);
     return $string;
 }
 
@@ -31,10 +31,9 @@ function getData($path)
         return $content;
     }
     throw new \Exception('File is not readable');
-    
 }
 
-function getType($path) 
+function getType($path)
 {
     $extension = pathinfo($path, PATHINFO_EXTENSION);
     return $extension;

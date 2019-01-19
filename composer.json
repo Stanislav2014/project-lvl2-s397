@@ -15,7 +15,8 @@
     "scripts": {
         "phpunit": "phpunit",
         "test": "phpunit tests",
-        "phpcs": "phpcs"
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf"
           },  
     "autoload": {
         "files": [

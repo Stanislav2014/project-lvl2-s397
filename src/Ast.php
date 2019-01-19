@@ -24,30 +24,26 @@ function createAst($before, $after)
                 } else {
                     $ast = createNode('changed', $key, $beforeValue, $afterValue, null);
                 }
-
             } elseif (array_key_exists($key, $before) && !array_key_exists($key, $after)) {
                 $ast = createNode('deleted', $key, $beforeValue, null, null);
-
             } elseif (!array_key_exists($key, $before) && array_key_exists($key, $after)) {
-
                 $ast = createNode('added', $key, null, $afterValue, null);
             }
-            return $ast; 
+            return $ast;
         }, $keys);
 
         //var_dump($diff);
 
         return $diff;
-    }
+}
 
 function createNode($type, $key, $beforeValue, $afterValue, $children)
-    {
+{
         return [
             'type' => $type,
             'key' => $key,
-            'beforeValue' => is_bool($beforeValue)? boolToStr($beforeValue) : $beforeValue,
-            'afterValue' => is_bool($afterValue)? boolToStr($afterValue) : $afterValue,
+            'beforeValue' => $beforeValue,
+            'afterValue' => $afterValue,
             'children' => $children
         ];
-
-    }
+}

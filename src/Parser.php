@@ -7,28 +7,19 @@ use Symfony\Component\Yaml\Yaml;
 function parse($type, $data)
 {
     switch ($type) {
-    case 'yml':
-
-        return Yaml::parse($data);
+        case 'yml':
+            return Yaml::parse($data);
 
         break;
             
-    case 'json':
-    
-        return json_decode($data, true);
+        case 'json':
+            return json_decode($data, true);
 
         break;
 
-    default:
-
-        throw new \Exception("This is '{$format}' unknowm format");
+        default:
+            throw new \Exception("This is '{$format}' unknowm format");
         
         break;
     }
-       
-}
-
-function boolToStr($bool)
-{
-    return $bool? 'true' : 'false';
 }

@@ -45,7 +45,5 @@ DOC;
         } catch (\Exception $exception) {
             echo $exception->getMessage() . PHP_EOL;
         }
-    
     }
-
 }
