@@ -14,7 +14,7 @@ Watch video on asciinema.org
 
 [gendiff recursive pretty](https://asciinema.org/a/S2bn55P3ttItaslzURg93OdgO)
 
-[gendiff recursive plain](https://asciinema.org/a/S2bn55P3ttItaslzURg93OdgO)
+[gendiff recursive plain](https://asciinema.org/a/oskpOCtzzANxuebDuEjqnu1Mu)
 
 
 
